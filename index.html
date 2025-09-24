@@ -807,7 +807,7 @@
                 </div>
 
                 <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                    <div class="progress-fill" id="progressFill" style="width: 4%;"></div>
                 </div>
 
                 <div id="questionContainer" class="question">
@@ -840,9 +840,6 @@
                     <button onclick="contactExpert()" class="cta-primary" style="margin-top: 15px;">
                         📞 Prendre RDV avec un expert
                     </button>
-                    <div style="margin-top:10px">
-                        <button onclick="exportLeads()" class="btn btn-secondary">⬇️ Exporter les leads (.csv)</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -850,13 +847,524 @@
 
     <script>
         // Test data - Questions and scoring logic
-        [/* ... truncated in this template; will be identical to user's original ... */];
-        function contactExpert(){
-          window.open(
-            'https://calendly.com/moirazen-coach/je-reserve-mon-1er-rdv-offert',
-            '_blank'
-          );
+        const questions = [
+            {
+                id: 1,
+                text: "Face à un projet important, vous avez tendance à :",
+                options: [
+                    { text: "Vérifier tous les détails plusieurs fois", driver: "parfait", score: 3 },
+                    { text: "Foncer rapidement pour obtenir des résultats", driver: "depeche", score: 3 },
+                    { text: "M'assurer que tout le monde est d'accord", driver: "plaisir", score: 3 },
+                    { text: "Prendre en charge sans montrer mes doutes", driver: "fort", score: 3 },
+                    { text: "Chercher la solution la plus complexe", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 2,
+                text: "Quand vous êtes sous pression, vous :",
+                options: [
+                    { text: "Devenez encore plus méticuleux", driver: "parfait", score: 3 },
+                    { text: "Accélérez le rythme de travail", driver: "depeche", score: 3 },
+                    { text: "Cherchez à rassurer les autres", driver: "plaisir", score: 3 },
+                    { text: "Gardez vos préoccupations pour vous", driver: "fort", score: 3 },
+                    { text: "Compliquez les choses sans le vouloir", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 3,
+                text: "Dans une réunion, vous avez tendance à :",
+                options: [
+                    { text: "Relever les erreurs et imprécisions", driver: "parfait", score: 3 },
+                    { text: "Vouloir accélérer les débats", driver: "depeche", score: 3 },
+                    { text: "Éviter les confrontations directes", driver: "plaisir", score: 3 },
+                    { text: "Rester silencieux même si vous n'êtes pas d'accord", driver: "fort", score: 3 },
+                    { text: "Proposer des solutions alambiquées", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 4,
+                text: "Votre plus grande peur au travail est :",
+                options: [
+                    { text: "Faire une erreur importante", driver: "parfait", score: 3 },
+                    { text: "Manquer de temps pour tout faire", driver: "depeche", score: 3 },
+                    { text: "Décevoir quelqu'un", driver: "plaisir", score: 3 },
+                    { text: "Montrer vos faiblesses", driver: "fort", score: 3 },
+                    { text: "Que les choses soient trop simples", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 5,
+                text: "Quand vous donnez des instructions à un collègue :",
+                options: [
+                    { text: "Vous donnez tous les détails nécessaires", driver: "parfait", score: 3 },
+                    { text: "Vous allez droit à l'essentiel", driver: "depeche", score: 3 },
+                    { text: "Vous vous assurez qu'il se sent à l'aise", driver: "plaisir", score: 3 },
+                    { text: "Vous restez factuel et direct", driver: "fort", score: 3 },
+                    { text: "Vous donnez plusieurs alternatives", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 6,
+                text: "Face à une critique constructive, vous :",
+                options: [
+                    { text: "L'analysez en détail pour vous améliorer", driver: "parfait", score: 3 },
+                    { text: "Voulez immédiatement corriger", driver: "depeche", score: 3 },
+                    { text: "Vous demandez si la personne est fâchée", driver: "plaisir", score: 3 },
+                    { text: "L'acceptez sans montrer d'émotion", driver: "fort", score: 3 },
+                    { text: "Cherchez à comprendre tous les aspects", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 7,
+                text: "Votre méthode de travail préférée est :",
+                options: [
+                    { text: "Planifiée et structurée", driver: "parfait", score: 3 },
+                    { text: "Rapide et efficace", driver: "depeche", score: 3 },
+                    { text: "Collaborative et harmonieuse", driver: "plaisir", score: 3 },
+                    { text: "Autonome et indépendante", driver: "fort", score: 3 },
+                    { text: "Créative et exploratoire", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 8,
+                text: "Quand quelqu'un vous interrompt pendant votre travail :",
+                options: [
+                    { text: "Vous êtes agacé car cela perturbe votre concentration", driver: "parfait", score: 3 },
+                    { text: "Vous gérez rapidement pour reprendre", driver: "depeche", score: 3 },
+                    { text: "Vous l'écoutez attentivement", driver: "plaisir", score: 3 },
+                    { text: "Vous restez poli mais distant", driver: "fort", score: 3 },
+                    { text: "Vous en profitez pour discuter du sujet", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 9,
+                text: "Dans un conflit au travail, vous :",
+                options: [
+                    { text: "Cherchez qui a raison avec des faits", driver: "parfait", score: 3 },
+                    { text: "Voulez résoudre rapidement le problème", driver: "depeche", score: 3 },
+                    { text: "Tentez de préserver les relations", driver: "plaisir", score: 3 },
+                    { text: "Restez neutre et objectif", driver: "fort", score: 3 },
+                    { text: "Explorez toutes les causes possibles", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 10,
+                text: "Votre façon d'aborder une nouvelle tâche :",
+                options: [
+                    { text: "Vous établissez un plan détaillé", driver: "parfait", score: 3 },
+                    { text: "Vous commencez immédiatement", driver: "depeche", score: 3 },
+                    { text: "Vous demandez conseil aux autres", driver: "plaisir", score: 3 },
+                    { text: "Vous vous documentez seul", driver: "fort", score: 3 },
+                    { text: "Vous réfléchissez à toutes les approches", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 11,
+                text: "Ce qui vous motive le plus au travail :",
+                options: [
+                    { text: "L'excellence et la qualité", driver: "parfait", score: 3 },
+                    { text: "L'action et les résultats", driver: "depeche", score: 3 },
+                    { text: "L'harmonie et la reconnaissance", driver: "plaisir", score: 3 },
+                    { text: "L'autonomie et le contrôle", driver: "fort", score: 3 },
+                    { text: "La complexité et les défis", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 12,
+                text: "Quand vous présentez un projet :",
+                options: [
+                    { text: "Vous préparez chaque détail", driver: "parfait", score: 3 },
+                    { text: "Vous allez directement aux conclusions", driver: "depeche", score: 3 },
+                    { text: "Vous jaugez les réactions de l'audience", driver: "plaisir", score: 3 },
+                    { text: "Vous restez factuel et concis", driver: "fort", score: 3 },
+                    { text: "Vous explorez plusieurs scénarios", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 13,
+                text: "Face à une échéance serrée :",
+                options: [
+                    { text: "Vous stressez sur la qualité du rendu", driver: "parfait", score: 3 },
+                    { text: "Vous êtes dans votre élément", driver: "depeche", score: 3 },
+                    { text: "Vous vous inquiétez pour votre équipe", driver: "plaisir", score: 3 },
+                    { text: "Vous gérez seul sans en parler", driver: "fort", score: 3 },
+                    { text: "Vous compliquez la tâche", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 14,
+                text: "Votre style de communication est :",
+                options: [
+                    { text: "Précis et structuré", driver: "parfait", score: 3 },
+                    { text: "Direct et énergique", driver: "depeche", score: 3 },
+                    { text: "Chaleureux et attentionné", driver: "plaisir", score: 3 },
+                    { text: "Sobre et professionnel", driver: "fort", score: 3 },
+                    { text: "Nuancé et détaillé", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 15,
+                text: "Dans un travail d'équipe, vous :",
+                options: [
+                    { text: "Vérifiez le travail des autres", driver: "parfait", score: 3 },
+                    { text: "Poussez l'équipe vers l'action", driver: "depeche", score: 3 },
+                    { text: "Maintenez la cohésion du groupe", driver: "plaisir", score: 3 },
+                    { text: "Prenez votre part sans dépendre des autres", driver: "fort", score: 3 },
+                    { text: "Proposez des approches innovantes", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 16,
+                text: "Quand vous recevez des compliments :",
+                options: [
+                    { text: "Vous pensez que c'est normal", driver: "parfait", score: 3 },
+                    { text: "Vous les acceptez rapidement", driver: "depeche", score: 3 },
+                    { text: "Vous en êtes très touché", driver: "plaisir", score: 3 },
+                    { text: "Vous restez modeste", driver: "fort", score: 3 },
+                    { text: "Vous analysez s'ils sont mérités", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 17,
+                text: "Votre plus grande force professionnelle :",
+                options: [
+                    { text: "Votre attention aux détails", driver: "parfait", score: 3 },
+                    { text: "Votre capacité d'action", driver: "depeche", score: 3 },
+                    { text: "Votre sens relationnel", driver: "plaisir", score: 3 },
+                    { text: "Votre résistance au stress", driver: "fort", score: 3 },
+                    { text: "Votre créativité", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 18,
+                text: "Quand vous devez prendre une décision importante :",
+                options: [
+                    { text: "Vous analysez tous les pour et contre", driver: "parfait", score: 3 },
+                    { text: "Vous décidez rapidement avec votre intuition", driver: "depeche", score: 3 },
+                    { text: "Vous consultez votre entourage", driver: "plaisir", score: 3 },
+                    { text: "Vous vous fiez à votre expérience", driver: "fort", score: 3 },
+                    { text: "Vous explorez des alternatives originales", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 19,
+                text: "Dans votre environnement de travail idéal :",
+                options: [
+                    { text: "Tout est organisé et à sa place", driver: "parfait", score: 3 },
+                    { text: "L'ambiance est dynamique", driver: "depeche", score: 3 },
+                    { text: "Les relations sont harmonieuses", driver: "plaisir", score: 3 },
+                    { text: "Chacun travaille de façon autonome", driver: "fort", score: 3 },
+                    { text: "Les projets sont variés et stimulants", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 20,
+                text: "Face à une surcharge de travail :",
+                options: [
+                    { text: "Vous refusez de bâcler", driver: "parfait", score: 3 },
+                    { text: "Vous accélérez encore plus", driver: "depeche", score: 3 },
+                    { text: "Vous n'osez pas dire non", driver: "plaisir", score: 3 },
+                    { text: "Vous gérez seul sans vous plaindre", driver: "fort", score: 3 },
+                    { text: "Vous cherchez des solutions complexes", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 21,
+                text: "Votre rapport aux règles et procédures :",
+                options: [
+                    { text: "Vous les respectez scrupuleusement", driver: "parfait", score: 3 },
+                    { text: "Vous les contournez si elles ralentissent", driver: "depeche", score: 3 },
+                    { text: "Vous les suivez pour ne pas déranger", driver: "plaisir", score: 3 },
+                    { text: "Vous les appliquez de façon pragmatique", driver: "fort", score: 3 },
+                    { text: "Vous les questionnez et les amendez", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 22,
+                text: "Quand vous formez quelqu'un :",
+                options: [
+                    { text: "Vous transmettez la bonne méthode", driver: "parfait", score: 3 },
+                    { text: "Vous montrez l'essentiel rapidement", driver: "depeche", score: 3 },
+                    { text: "Vous vous adaptez à son rythme", driver: "plaisir", score: 3 },
+                    { text: "Vous le laissez découvrir par lui-même", driver: "fort", score: 3 },
+                    { text: "Vous explorez différentes approches", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 23,
+                text: "Votre vision du succès professionnel :",
+                options: [
+                    { text: "Un travail irréprochable", driver: "parfait", score: 3 },
+                    { text: "Des résultats rapides et visibles", driver: "depeche", score: 3 },
+                    { text: "La reconnaissance de tous", driver: "plaisir", score: 3 },
+                    { text: "L'indépendance et l'autonomie", driver: "fort", score: 3 },
+                    { text: "La résolution de défis complexes", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 24,
+                text: "Ce qui vous épuise le plus au travail :",
+                options: [
+                    { text: "Les approximations et le travail bâclé", driver: "parfait", score: 3 },
+                    { text: "Les lenteurs et les blocages", driver: "depeche", score: 3 },
+                    { text: "Les tensions et les conflits", driver: "plaisir", score: 3 },
+                    { text: "Devoir montrer vos émotions", driver: "fort", score: 3 },
+                    { text: "Les tâches trop simples et répétitives", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 25,
+                text: "Votre message de fin d'email type :",
+                options: [
+                    { text: "Cordialement (simple et correct)", driver: "parfait", score: 3 },
+                    { text: "À très vite ! (dynamique)", driver: "depeche", score: 3 },
+                    { text: "Bien à vous (chaleureux)", driver: "plaisir", score: 3 },
+                    { text: "Salutations (neutre)", driver: "fort", score: 3 },
+                    { text: "Belle journée à vous ! (original)", driver: "efforts", score: 3 }
+                ]
+            }
+        ];
+
+        // Driver descriptions
+        const driverDescriptions = {
+            parfait: {
+                name: "Sois Parfait",
+                emoji: "🎯",
+                description: "Vous recherchez l'excellence et la précision dans tout ce que vous faites. Votre attention aux détails est remarquable, mais attention à ne pas vous perdre dans le perfectionnisme paralysant.",
+                strengths: "Excellence, fiabilité, qualité, rigueur",
+                challenges: "Perfectionnisme excessif, lenteur, stress sur les détails"
+            },
+            depeche: {
+                name: "Dépêche-toi", 
+                emoji: "⚡",
+                description: "Vous êtes orienté action et résultats. Votre rapidité d'exécution est impressionnante, mais veillez à ne pas sacrifier la qualité sur l'autel de la vitesse.",
+                strengths: "Efficacité, dynamisme, réactivité, orientation résultats",
+                challenges: "Impatience, erreurs par précipitation, stress temporel"
+            },
+            plaisir: {
+                name: "Fais Plaisir",
+                emoji: "❤️", 
+                description: "Vous privilégiez l'harmonie et les bonnes relations. Votre empathie est précieuse, mais attention à ne pas vous oublier pour satisfaire les autres.",
+                strengths: "Empathie, diplomatie, collaboration, harmonie",
+                challenges: "Difficulté à dire non, évitement des conflits, oubli de soi"
+            },
+            fort: {
+                name: "Sois Fort",
+                emoji: "💪",
+                description: "Vous faites preuve d'une grande résistance et autonomie. Votre capacité à gérer seul est remarquable, mais pensez à accepter l'aide et exprimer vos besoins.",
+                strengths: "Autonomie, résistance, fiabilité, contrôle de soi", 
+                challenges: "Isolement, difficulté à demander de l'aide, accumulation du stress"
+            },
+            efforts: {
+                name: "Fais des Efforts",
+                emoji: "🧩",
+                description: "Vous aimez la complexité et les défis intellectuels. Votre créativité est un atout, mais attention à ne pas compliquer inutilement les choses simples.",
+                strengths: "Créativité, innovation, analyse approfondie, persévérance",
+                challenges: "Complication excessive, difficulté avec la simplicité, perfectionnisme créatif"
+            }
+        };
+
+        // Test state
+        let currentQuestionIndex = 0;
+        let answers = {};
+        let userEmail = '';
+        let userName = '';
+
+        // Functions
+        function startTest() {
+            document.getElementById('testSection').classList.remove('hidden');
+            document.getElementById('testSection').scrollIntoView({ behavior: 'smooth' });
         }
+
+        function startQuestionnaire() {
+            const email = document.getElementById('userEmail').value;
+            const name = document.getElementById('userName').value;
+            
+            if (!email || !name) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            if (!email.includes('@')) {
+                alert('Veuillez entrer une adresse email valide');
+                return;
+            }
+            
+            userEmail = email;
+            userName = name;
+            
+            // LOG DES EMAILS DANS LA CONSOLE
+            console.log(`🎯 NOUVEAU LEAD - Test des Drivers`);
+            console.log(`📧 Email: ${email}`);
+            console.log(`👤 Nom: ${name}`);
+            console.log(`📅 Date: ${new Date().toLocaleString('fr-FR')}`);
+            console.log(`-----------------------------------`);
+            
+            document.getElementById('emailCapture').classList.add('hidden');
+            document.getElementById('testContainer').classList.remove('hidden');
+            
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestionIndex];
+            const container = document.getElementById('questionContainer');
+            
+            let html = `
+                <h3>${question.text}</h3>
+                <div class="options">
+            `;
+            
+            question.options.forEach((option, index) => {
+                const isSelected = answers[question.id] === index;
+                html += `
+                    <div class="option ${isSelected ? 'selected' : ''}" onclick="selectOption(${question.id}, ${index})">
+                        <input type="radio" name="q${question.id}" value="${index}" id="q${question.id}_${index}" ${isSelected ? 'checked' : ''}>
+                        <label for="q${question.id}_${index}">${option.text}</label>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            container.innerHTML = html;
+            
+            // Update progress
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            document.getElementById('totalQuestions').textContent = questions.length;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            document.getElementById('nextBtn').disabled = answers[question.id] === undefined;
+            
+            if (currentQuestionIndex === questions.length - 1) {
+                document.getElementById('nextBtn').textContent = 'Voir mes résultats 🎉';
+            }
+        }
+
+        function selectOption(questionId, optionIndex) {
+            answers[questionId] = optionIndex;
+            
+            // Update visual selection
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => option.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+            
+            // Enable next button
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        }
+
+        function showResults() {
+            // Calculate scores
+            const scores = {
+                parfait: 0,
+                depeche: 0, 
+                plaisir: 0,
+                fort: 0,
+                efforts: 0
+            };
+            
+            questions.forEach(question => {
+                const answerIndex = answers[question.id];
+                if (answerIndex !== undefined) {
+                    const selectedOption = question.options[answerIndex];
+                    scores[selectedOption.driver] += selectedOption.score;
+                }
+            });
+            
+            // Sort drivers by score
+            const sortedDrivers = Object.entries(scores)
+                .sort(([,a], [,b]) => b - a)
+                .map(([driver, score]) => ({
+                    driver,
+                    score,
+                    percentage: Math.round((score / (questions.length * 3)) * 100),
+                    ...driverDescriptions[driver]
+                }));
+            
+            // LOG DES RÉSULTATS DANS LA CONSOLE
+            console.log(`🎯 RÉSULTATS TEST - ${userName} (${userEmail})`);
+            sortedDrivers.forEach((result, index) => {
+                const rank = index === 0 ? '🏆 DOMINANT' : `#${index + 1}`;
+                console.log(`${rank} ${result.emoji} ${result.name}: ${result.percentage}%`);
+            });
+            console.log(`📅 Terminé le: ${new Date().toLocaleString('fr-FR')}`);
+            console.log(`=====================================`);
+            
+            // Generate results HTML
+            let resultsHTML = `
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <p style="font-size: 1.2em; color: #4a5568;">
+                        Bonjour <strong>${userName}</strong>, voici votre profil de drivers :
+                    </p>
+                </div>
+            `;
+            
+            sortedDrivers.forEach((result, index) => {
+                const isTopDriver = index === 0;
+                const cardStyle = isTopDriver ? 
+                    'background: linear-gradient(135deg, #f0fff4, #e6fffa); border-left-color: #38a169; border-left-width: 6px;' : 
+                    'background: #f8fafc; border-left-color: #cbd5e0; border-left-width: 4px;';
+                
+                resultsHTML += `
+                    <div class="driver-result" style="${cardStyle}">
+                        <div class="driver-name">
+                            ${result.emoji} ${result.name}
+                            ${isTopDriver ? '<span style="color: #38a169; font-size: 0.8em; margin-left: 10px;">DRIVER DOMINANT</span>' : ''}
+                        </div>
+                        <div class="driver-score">
+                            Score: ${result.score}/${questions.length * 3} (${result.percentage}%)
+                        </div>
+                        <div class="driver-description">
+                            <p><strong>Description:</strong> ${result.description}</p>
+                            <p><strong>Forces:</strong> ${result.strengths}</p>
+                            <p><strong>Attention à:</strong> ${result.challenges}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('resultsContent').innerHTML = resultsHTML;
+            document.getElementById('testContainer').classList.add('hidden');
+            document.getElementById('resultsContainer').classList.remove('hidden');
+            
+            // Scroll to results
+            document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function contactExpert() {
+            // LOG DE LA DEMANDE DE RDV DANS LA CONSOLE
+            console.log(`📞 DEMANDE RDV - ${userName} (${userEmail})`);
+            console.log(`🎯 Redirection vers Calendly`);
+            console.log(`📅 ${new Date().toLocaleString('fr-FR')}`);
+            console.log(`-----------------------------------`);
+            
+            // Redirection vers Calendly
+            window.open('https://calendly.com/moirazen-coach/je-reserve-mon-1er-rdv-offert?utm_source=schedule_from_linkedin&month=2025-09&date=2025-09-26', '_blank');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎯 Test des Drivers - MOIRA zen - Système de tracking activé');
+            console.log('📧 Pour voir les leads: F12 > Console > Suivre les logs avec 🎯');
+        });
     </script>
 </body>
 </html>
