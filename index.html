@@ -1192,6 +1192,7 @@
             
             userEmail = email;
             userName = name;
+            console.log(`Nouvel utilisateur: ${name} - ${email} - ${new Date().toLocaleDateString()}`);
             
             document.getElementById('emailCapture').classList.add('hidden');
             document.getElementById('testContainer').classList.remove('hidden');
@@ -1335,7 +1336,7 @@
 
         function contactExpert() {
             // Simulate sending results to expert
-            alert(`Merci ${userName} ! Un expert vous contactera bientôt à ${userEmail} pour approfondir votre analyse des drivers.`);
+            window.open('https://calendly.com/moirazen-coach/je-reserve-mon-1er-rdv-offert?utm_source=schedule_from_linkedin&month=2025-09&date=2025-09-26', '_blank');
         }
 
         // Initialize
@@ -1344,4 +1345,5 @@
         });
     </script>
 </body>
+
 </html>
