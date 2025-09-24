@@ -1192,7 +1192,13 @@
             
             userEmail = email;
             userName = name;
-            console.log(`Nouvel utilisateur: ${name} - ${email} - ${new Date().toLocaleDateString()}`);
+            
+            // LOG DES EMAILS DANS LA CONSOLE
+            console.log(`🎯 NOUVEAU LEAD - Test des Drivers`);
+            console.log(`📧 Email: ${email}`);
+            console.log(`👤 Nom: ${name}`);
+            console.log(`📅 Date: ${new Date().toLocaleString('fr-FR')}`);
+            console.log(`-----------------------------------`);
             
             document.getElementById('emailCapture').classList.add('hidden');
             document.getElementById('testContainer').classList.remove('hidden');
@@ -1293,6 +1299,15 @@
                     ...driverDescriptions[driver]
                 }));
             
+            // LOG DES RÉSULTATS DANS LA CONSOLE
+            console.log(`🎯 RÉSULTATS TEST - ${userName} (${userEmail})`);
+            sortedDrivers.forEach((result, index) => {
+                const rank = index === 0 ? '🏆 DOMINANT' : `#${index + 1}`;
+                console.log(`${rank} ${result.emoji} ${result.name}: ${result.percentage}%`);
+            });
+            console.log(`📅 Terminé le: ${new Date().toLocaleString('fr-FR')}`);
+            console.log(`=====================================`);
+            
             // Generate results HTML
             let resultsHTML = `
                 <div style="text-align: center; margin-bottom: 30px;">
@@ -1335,15 +1350,21 @@
         }
 
         function contactExpert() {
-            // Simulate sending results to expert
+            // LOG DE LA DEMANDE DE RDV DANS LA CONSOLE
+            console.log(`📞 DEMANDE RDV - ${userName} (${userEmail})`);
+            console.log(`🎯 Redirection vers Calendly`);
+            console.log(`📅 ${new Date().toLocaleString('fr-FR')}`);
+            console.log(`-----------------------------------`);
+            
+            // Redirection vers Calendly
             window.open('https://calendly.com/moirazen-coach/je-reserve-mon-1er-rdv-offert?utm_source=schedule_from_linkedin&month=2025-09&date=2025-09-26', '_blank');
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Any initialization code can go here
+            console.log('🎯 Test des Drivers - MOIRA zen - Système de tracking activé');
+            console.log('📧 Pour voir les leads: F12 > Console > Suivre les logs avec 🎯');
         });
     </script>
 </body>
-
 </html>
