@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Découvrez vos Drivers - Test Gratuit Taibi Kahler</title>
+    <meta name="description" content="Test gratuit des drivers basé sur les travaux de Taibi Kahler. Découvrez vos mécanismes inconscients qui influencent votre efficacité professionnelle.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .author-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.3em;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(45, 55, 72, 0.3);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(45, 55, 72, 0.4);
+        }
+        
+        .benefits {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 60px;
+            color: #2d3748;
+            font-weight: 700;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .benefit-card {
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: #4a5568;
+        }
+        
+        .benefit-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #2d3748;
+            font-weight: 600;
+        }
+        
+        .benefit-card p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .what-are-drivers {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .drivers-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .drivers-text h2 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .drivers-text p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .drivers-list {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+        }
+        
+        .driver-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+        }
+        
+        .driver-emoji {
+            font-size: 1.8em;
+            margin-right: 15px;
+        }
+        
+        .driver-name {
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .how-it-works {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #2d3748;
+            font-weight: 600;
+        }
+        
+        .step p {
+            color: #4a5568;
+        }
+        
+        .testimonial {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+            padding: 80px 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .quote-icon {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 3em;
+            color: #4a5568;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #4a5568;
+        }
+        
+        .final-cta {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .final-cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .final-cta p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .urgency {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 40px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            font-size: 2em;
+            color: #2d3748;
+        }
+        
+        .brand-name {
+            color: white;
+            font-size: 2.5em;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .brand-tagline {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .test-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 60px 0;
+            min-height: 100vh;
+        }
+        
+        .email-capture {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .email-capture h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .email-capture p {
+            color: #4a5568;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .email-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .email-input {
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: #4a5568;
+        }
+        
+        .test-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question-counter {
+            background: #4a5568;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+        }
+        
+        .question h3 {
+            color: #2d3748;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .option {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .option:hover {
+            border-color: #4a5568;
+            background: #edf2f7;
+            transform: translateY(-2px);
+        }
+        
+        .option.selected {
+            border-color: #4a5568;
+            background: #e6fffa;
+            box-shadow: 0 4px 12px rgba(74, 85, 104, 0.2);
+        }
+        
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .option label {
+            cursor: pointer;
+            font-weight: 500;
+            color: #2d3748;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4a5568, #2d3748);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 85, 104, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        .results {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .driver-result {
+            background: #f0fff4;
+            border-left: 4px solid #38a169;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .driver-result .driver-name {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .driver-score {
+            font-size: 1.1em;
+            color: #38a169;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .driver-description {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #2d3748, #4a5568);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+            
+            .drivers-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .benefits-grid, .steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-card {
+                padding: 30px;
+            }
+            
+            .email-capture, .test-container, .results {
+                padding: 25px;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element" style="width: 60px; height: 60px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+            <div class="floating-element" style="width: 80px; height: 80px; top: 20%; right: 10%; animation-delay: 2s;"></div>
+            <div class="floating-element" style="width: 40px; height: 40px; top: 60%; left: 5%; animation-delay: 4s;"></div>
+        </div>
+        
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    🧠
+                </div>
+                <div>
+                    <div class="brand-name">MOIRA zen</div>
+                    <div class="brand-tagline">Psychologue du travail • Coach professionnelle</div>
+                </div>
+            </div>
+            
+            <div class="author-badge">
+                ✨ Test basé sur les travaux de Taibi Kahler - Analyse Transactionnelle
+            </div>
+            
+            <h1>Découvrez vos Drivers</h1>
+            <p class="subtitle">Les mécanismes inconscients qui pilotent<br>votre efficacité professionnelle</p>
+            
+            <button onclick="startTest()" class="cta-primary">🎯 Faire le test gratuit (5 min)</button>
+            
+            <p style="margin-top: 20px; opacity: 0.8;">✅ Test gratuit • ✅ Résultats immédiats • ✅ Approche scientifique</p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Pourquoi connaître vos Drivers ?</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Comprenez vos automatismes</h3>
+                    <p>Identifiez les mécanismes inconscients qui gouvernent vos réactions sous stress et en situation professionnelle.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Optimisez votre efficacité</h3>
+                    <p>Transformez vos points de tension en leviers de performance grâce à une meilleure connaissance de soi.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Améliorez vos relations</h3>
+                    <p>Développez votre intelligence relationnelle en comprenant vos propres modes de fonctionnement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What are Drivers Section -->
+    <section class="what-are-drivers">
+        <div class="container">
+            <div class="drivers-content">
+                <div class="drivers-text">
+                    <h2>Que sont les Drivers ?</h2>
+                    <p><strong>Les Drivers sont des "pilotes automatiques"</strong> identifiés par le psychologue américain Taibi Kahler dans le cadre de l'Analyse Transactionnelle.</p>
+                    <p>Ces mécanismes inconscients se déclenchent principalement sous stress et influencent nos comportements, nos prises de décision et nos interactions professionnelles.</p>
+                    <p><strong>En comprenant vos Drivers dominants</strong>, vous pouvez transformer vos réflexes limitants en atouts pour votre carrière.</p>
+                </div>
+                
+                <div class="drivers-list">
+                    <div class="driver-item">
+                        <span class="driver-emoji">🎯</span>
+                        <span class="driver-name">Sois Parfait</span>
+                    </div>
+                    <div class="driver-item">
+                        <span class="driver-emoji">⚡</span>
+                        <span class="driver-name">Dépêche-toi</span>
+                    </div>
+                    <div class="driver-item">
+                        <span class="driver-emoji">❤️</span>
+                        <span class="driver-name">Fais Plaisir</span>
+                    </div>
+                    <div class="driver-item">
+                        <span class="driver-emoji">💪</span>
+                        <span class="driver-name">Sois Fort</span>
+                    </div>
+                    <div class="driver-item">
+                        <span class="driver-emoji">🧩</span>
+                        <span class="driver-name">Fais des Efforts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Comment ça marche ?</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Répondez au questionnaire</h3>
+                    <p>25 questions sur vos comportements professionnels typiques (5 minutes)</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Découvrez vos résultats</h3>
+                    <p>Obtenez immédiatement votre profil personnalisé avec vos drivers dominants</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Passez à l'action</h3>
+                    <p>Recevez des conseils pratiques pour optimiser votre efficacité professionnelle</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    "Comprendre mes drivers m'a permis de transformer ma façon de manager. 
+                    Maintenant je sais pourquoi je réagis de telle façon sous stress et comment m'adapter. 
+                    Un vrai game-changer pour mon efficacité et mes relations d'équipe !"
+                </p>
+                <div class="testimonial-author">
+                    Marie L. - Directrice Marketing
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="test">
+        <div class="container">
+            <div class="urgency">
+                🔥 Test 100% gratuit - Résultats immédiats
+            </div>
+            
+            <h2>Prêt(e) à découvrir vos Drivers ?</h2>
+            <p>Commencez dès maintenant votre transformation professionnelle</p>
+            
+            <button onclick="startTest()" class="cta-primary" style="font-size: 1.4em; padding: 25px 50px;">
+                🚀 Commencer le test maintenant
+            </button>
+            
+            <p style="margin-top: 30px; opacity: 0.8; font-size: 0.9em;">
+                ⏱️ 5 minutes • 📊 Approche scientifique • 🎯 Résultats personnalisés
+            </p>
+        </div>
+    </section>
+
+    <!-- Test Section (Hidden initially) -->
+    <section id="testSection" class="test-section hidden">
+        <div class="container">
+            <!-- Email Capture Form -->
+            <div id="emailCapture" class="email-capture">
+                <h2>Commencez votre test des Drivers</h2>
+                <p>Entrez votre email pour recevoir vos résultats personnalisés</p>
+                
+                <div class="email-form">
+                    <input type="email" id="userEmail" class="email-input" placeholder="Votre adresse email" required>
+                    <input type="text" id="userName" class="email-input" placeholder="Votre prénom" required>
+                    <button onclick="startQuestionnaire()" class="cta-primary">
+                        ✨ Commencer le questionnaire
+                    </button>
+                </div>
+                
+                <p style="font-size: 0.9em; opacity: 0.7; margin-top: 20px;">
+                    🔒 Vos données sont sécurisées et ne seront jamais partagées
+                </p>
+            </div>
+
+            <!-- Test Container -->
+            <div id="testContainer" class="test-container hidden">
+                <div class="question-counter">
+                    Question <span id="currentQuestion">1</span> sur <span id="totalQuestions">25</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 4%;"></div>
+                </div>
+
+                <div id="questionContainer" class="question">
+                    <!-- Questions will be inserted here by JavaScript -->
+                </div>
+
+                <div class="nav-buttons">
+                    <button onclick="previousQuestion()" id="prevBtn" class="btn btn-secondary" disabled>
+                        ← Précédent
+                    </button>
+                    <button onclick="nextQuestion()" id="nextBtn" class="btn btn-primary" disabled>
+                        Suivant →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div id="resultsContainer" class="results hidden">
+                <h2 style="color: #2d3748; margin-bottom: 30px; text-align: center;">
+                    🎉 Vos résultats du test des Drivers
+                </h2>
+                
+                <div id="resultsContent">
+                    <!-- Results will be inserted here by JavaScript -->
+                </div>
+                
+                <div class="cta-section">
+                    <h3>🚀 Allez plus loin dans votre développement</h3>
+                    <p>Découvrez comment optimiser votre efficacité grâce à une analyse approfondie de votre profil</p>
+                    <button onclick="contactExpert()" class="cta-primary" style="margin-top: 15px;">
+                        📞 Prendre RDV avec un expert
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Test data - Questions and scoring logic
+        const questions = [
+            {
+                id: 1,
+                text: "Face à un projet important, vous avez tendance à :",
+                options: [
+                    { text: "Vérifier tous les détails plusieurs fois", driver: "parfait", score: 3 },
+                    { text: "Foncer rapidement pour obtenir des résultats", driver: "depeche", score: 3 },
+                    { text: "M'assurer que tout le monde est d'accord", driver: "plaisir", score: 3 },
+                    { text: "Prendre en charge sans montrer mes doutes", driver: "fort", score: 3 },
+                    { text: "Chercher la solution la plus complexe", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 2,
+                text: "Quand vous êtes sous pression, vous :",
+                options: [
+                    { text: "Devenez encore plus méticuleux", driver: "parfait", score: 3 },
+                    { text: "Accélérez le rythme de travail", driver: "depeche", score: 3 },
+                    { text: "Cherchez à rassurer les autres", driver: "plaisir", score: 3 },
+                    { text: "Gardez vos préoccupations pour vous", driver: "fort", score: 3 },
+                    { text: "Compliquez les choses sans le vouloir", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 3,
+                text: "Dans une réunion, vous avez tendance à :",
+                options: [
+                    { text: "Relever les erreurs et imprécisions", driver: "parfait", score: 3 },
+                    { text: "Vouloir accélérer les débats", driver: "depeche", score: 3 },
+                    { text: "Éviter les confrontations directes", driver: "plaisir", score: 3 },
+                    { text: "Rester silencieux même si vous n'êtes pas d'accord", driver: "fort", score: 3 },
+                    { text: "Proposer des solutions alambiquées", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 4,
+                text: "Votre plus grande peur au travail est :",
+                options: [
+                    { text: "Faire une erreur importante", driver: "parfait", score: 3 },
+                    { text: "Manquer de temps pour tout faire", driver: "depeche", score: 3 },
+                    { text: "Décevoir quelqu'un", driver: "plaisir", score: 3 },
+                    { text: "Montrer vos faiblesses", driver: "fort", score: 3 },
+                    { text: "Que les choses soient trop simples", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 5,
+                text: "Quand vous donnez des instructions à un collègue :",
+                options: [
+                    { text: "Vous donnez tous les détails nécessaires", driver: "parfait", score: 3 },
+                    { text: "Vous allez droit à l'essentiel", driver: "depeche", score: 3 },
+                    { text: "Vous vous assurez qu'il se sent à l'aise", driver: "plaisir", score: 3 },
+                    { text: "Vous restez factuel et direct", driver: "fort", score: 3 },
+                    { text: "Vous donnez plusieurs alternatives", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 6,
+                text: "Face à une critique constructive, vous :",
+                options: [
+                    { text: "L'analysez en détail pour vous améliorer", driver: "parfait", score: 3 },
+                    { text: "Voulez immédiatement corriger", driver: "depeche", score: 3 },
+                    { text: "Vous demandez si la personne est fâchée", driver: "plaisir", score: 3 },
+                    { text: "L'acceptez sans montrer d'émotion", driver: "fort", score: 3 },
+                    { text: "Cherchez à comprendre tous les aspects", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 7,
+                text: "Votre méthode de travail préférée est :",
+                options: [
+                    { text: "Planifiée et structurée", driver: "parfait", score: 3 },
+                    { text: "Rapide et efficace", driver: "depeche", score: 3 },
+                    { text: "Collaborative et harmonieuse", driver: "plaisir", score: 3 },
+                    { text: "Autonome et indépendante", driver: "fort", score: 3 },
+                    { text: "Créative et exploratoire", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 8,
+                text: "Quand quelqu'un vous interrompt pendant votre travail :",
+                options: [
+                    { text: "Vous êtes agacé car cela perturbe votre concentration", driver: "parfait", score: 3 },
+                    { text: "Vous gérez rapidement pour reprendre", driver: "depeche", score: 3 },
+                    { text: "Vous l'écoutez attentivement", driver: "plaisir", score: 3 },
+                    { text: "Vous restez poli mais distant", driver: "fort", score: 3 },
+                    { text: "Vous en profitez pour discuter du sujet", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 9,
+                text: "Dans un conflit au travail, vous :",
+                options: [
+                    { text: "Cherchez qui a raison avec des faits", driver: "parfait", score: 3 },
+                    { text: "Voulez résoudre rapidement le problème", driver: "depeche", score: 3 },
+                    { text: "Tentez de préserver les relations", driver: "plaisir", score: 3 },
+                    { text: "Restez neutre et objectif", driver: "fort", score: 3 },
+                    { text: "Explorez toutes les causes possibles", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 10,
+                text: "Votre façon d'aborder une nouvelle tâche :",
+                options: [
+                    { text: "Vous établissez un plan détaillé", driver: "parfait", score: 3 },
+                    { text: "Vous commencez immédiatement", driver: "depeche", score: 3 },
+                    { text: "Vous demandez conseil aux autres", driver: "plaisir", score: 3 },
+                    { text: "Vous vous documentez seul", driver: "fort", score: 3 },
+                    { text: "Vous réfléchissez à toutes les approches", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 11,
+                text: "Ce qui vous motive le plus au travail :",
+                options: [
+                    { text: "L'excellence et la qualité", driver: "parfait", score: 3 },
+                    { text: "L'action et les résultats", driver: "depeche", score: 3 },
+                    { text: "L'harmonie et la reconnaissance", driver: "plaisir", score: 3 },
+                    { text: "L'autonomie et le contrôle", driver: "fort", score: 3 },
+                    { text: "La complexité et les défis", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 12,
+                text: "Quand vous présentez un projet :",
+                options: [
+                    { text: "Vous préparez chaque détail", driver: "parfait", score: 3 },
+                    { text: "Vous allez directement aux conclusions", driver: "depeche", score: 3 },
+                    { text: "Vous jaugez les réactions de l'audience", driver: "plaisir", score: 3 },
+                    { text: "Vous restez factuel et concis", driver: "fort", score: 3 },
+                    { text: "Vous explorez plusieurs scénarios", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 13,
+                text: "Face à une échéance serrée :",
+                options: [
+                    { text: "Vous stressez sur la qualité du rendu", driver: "parfait", score: 3 },
+                    { text: "Vous êtes dans votre élément", driver: "depeche", score: 3 },
+                    { text: "Vous vous inquiétez pour votre équipe", driver: "plaisir", score: 3 },
+                    { text: "Vous gérez seul sans en parler", driver: "fort", score: 3 },
+                    { text: "Vous compliquez la tâche", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 14,
+                text: "Votre style de communication est :",
+                options: [
+                    { text: "Précis et structuré", driver: "parfait", score: 3 },
+                    { text: "Direct et énergique", driver: "depeche", score: 3 },
+                    { text: "Chaleureux et attentionné", driver: "plaisir", score: 3 },
+                    { text: "Sobre et professionnel", driver: "fort", score: 3 },
+                    { text: "Nuancé et détaillé", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 15,
+                text: "Dans un travail d'équipe, vous :",
+                options: [
+                    { text: "Vérifiez le travail des autres", driver: "parfait", score: 3 },
+                    { text: "Poussez l'équipe vers l'action", driver: "depeche", score: 3 },
+                    { text: "Maintenez la cohésion du groupe", driver: "plaisir", score: 3 },
+                    { text: "Prenez votre part sans dépendre des autres", driver: "fort", score: 3 },
+                    { text: "Proposez des approches innovantes", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 16,
+                text: "Quand vous recevez des compliments :",
+                options: [
+                    { text: "Vous pensez que c'est normal", driver: "parfait", score: 3 },
+                    { text: "Vous les acceptez rapidement", driver: "depeche", score: 3 },
+                    { text: "Vous en êtes très touché", driver: "plaisir", score: 3 },
+                    { text: "Vous restez modeste", driver: "fort", score: 3 },
+                    { text: "Vous analysez s'ils sont mérités", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 17,
+                text: "Votre plus grande force professionnelle :",
+                options: [
+                    { text: "Votre attention aux détails", driver: "parfait", score: 3 },
+                    { text: "Votre capacité d'action", driver: "depeche", score: 3 },
+                    { text: "Votre sens relationnel", driver: "plaisir", score: 3 },
+                    { text: "Votre résistance au stress", driver: "fort", score: 3 },
+                    { text: "Votre créativité", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 18,
+                text: "Quand vous devez prendre une décision importante :",
+                options: [
+                    { text: "Vous analysez tous les pour et contre", driver: "parfait", score: 3 },
+                    { text: "Vous décidez rapidement avec votre intuition", driver: "depeche", score: 3 },
+                    { text: "Vous consultez votre entourage", driver: "plaisir", score: 3 },
+                    { text: "Vous vous fiez à votre expérience", driver: "fort", score: 3 },
+                    { text: "Vous explorez des alternatives originales", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 19,
+                text: "Dans votre environnement de travail idéal :",
+                options: [
+                    { text: "Tout est organisé et à sa place", driver: "parfait", score: 3 },
+                    { text: "L'ambiance est dynamique", driver: "depeche", score: 3 },
+                    { text: "Les relations sont harmonieuses", driver: "plaisir", score: 3 },
+                    { text: "Chacun travaille de façon autonome", driver: "fort", score: 3 },
+                    { text: "Les projets sont variés et stimulants", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 20,
+                text: "Face à une surcharge de travail :",
+                options: [
+                    { text: "Vous refusez de bâcler", driver: "parfait", score: 3 },
+                    { text: "Vous accélérez encore plus", driver: "depeche", score: 3 },
+                    { text: "Vous n'osez pas dire non", driver: "plaisir", score: 3 },
+                    { text: "Vous gérez seul sans vous plaindre", driver: "fort", score: 3 },
+                    { text: "Vous cherchez des solutions complexes", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 21,
+                text: "Votre rapport aux règles et procédures :",
+                options: [
+                    { text: "Vous les respectez scrupuleusement", driver: "parfait", score: 3 },
+                    { text: "Vous les contournez si elles ralentissent", driver: "depeche", score: 3 },
+                    { text: "Vous les suivez pour ne pas déranger", driver: "plaisir", score: 3 },
+                    { text: "Vous les appliquez de façon pragmatique", driver: "fort", score: 3 },
+                    { text: "Vous les questionnez et les amendez", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 22,
+                text: "Quand vous formez quelqu'un :",
+                options: [
+                    { text: "Vous transmettez la bonne méthode", driver: "parfait", score: 3 },
+                    { text: "Vous montrez l'essentiel rapidement", driver: "depeche", score: 3 },
+                    { text: "Vous vous adaptez à son rythme", driver: "plaisir", score: 3 },
+                    { text: "Vous le laissez découvrir par lui-même", driver: "fort", score: 3 },
+                    { text: "Vous explorez différentes approches", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 23,
+                text: "Votre vision du succès professionnel :",
+                options: [
+                    { text: "Un travail irréprochable", driver: "parfait", score: 3 },
+                    { text: "Des résultats rapides et visibles", driver: "depeche", score: 3 },
+                    { text: "La reconnaissance de tous", driver: "plaisir", score: 3 },
+                    { text: "L'indépendance et l'autonomie", driver: "fort", score: 3 },
+                    { text: "La résolution de défis complexes", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 24,
+                text: "Ce qui vous épuise le plus au travail :",
+                options: [
+                    { text: "Les approximations et le travail bâclé", driver: "parfait", score: 3 },
+                    { text: "Les lenteurs et les blocages", driver: "depeche", score: 3 },
+                    { text: "Les tensions et les conflits", driver: "plaisir", score: 3 },
+                    { text: "Devoir montrer vos émotions", driver: "fort", score: 3 },
+                    { text: "Les tâches trop simples et répétitives", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 25,
+                text: "Votre message de fin d'email type :",
+                options: [
+                    { text: "Cordialement (simple et correct)", driver: "parfait", score: 3 },
+                    { text: "À très vite ! (dynamique)", driver: "depeche", score: 3 },
+                    { text: "Bien à vous (chaleureux)", driver: "plaisir", score: 3 },
+                    { text: "Salutations (neutre)", driver: "fort", score: 3 },
+                    { text: "Belle journée à vous ! (original)", driver: "efforts", score: 3 }
+                ]
+            }
+        ];
+
+        // Driver descriptions
+        const driverDescriptions = {
+            parfait: {
+                name: "Sois Parfait",
+                emoji: "🎯",
+                description: "Vous recherchez l'excellence et la précision dans tout ce que vous faites. Votre attention aux détails est remarquable, mais attention à ne pas vous perdre dans le perfectionnisme paralysant.",
+                strengths: "Excellence, fiabilité, qualité, rigueur",
+                challenges: "Perfectionnisme excessif, lenteur, stress sur les détails"
+            },
+            depeche: {
+                name: "Dépêche-toi", 
+                emoji: "⚡",
+                description: "Vous êtes orienté action et résultats. Votre rapidité d'exécution est impressionnante, mais veillez à ne pas sacrifier la qualité sur l'autel de la vitesse.",
+                strengths: "Efficacité, dynamisme, réactivité, orientation résultats",
+                challenges: "Impatience, erreurs par précipitation, stress temporel"
+            },
+            plaisir: {
+                name: "Fais Plaisir",
+                emoji: "❤️", 
+                description: "Vous privilégiez l'harmonie et les bonnes relations. Votre empathie est précieuse, mais attention à ne pas vous oublier pour satisfaire les autres.",
+                strengths: "Empathie, diplomatie, collaboration, harmonie",
+                challenges: "Difficulté à dire non, évitement des conflits, oubli de soi"
+            },
+            fort: {
+                name: "Sois Fort",
+                emoji: "💪",
+                description: "Vous faites preuve d'une grande résistance et autonomie. Votre capacité à gérer seul est remarquable, mais pensez à accepter l'aide et exprimer vos besoins.",
+                strengths: "Autonomie, résistance, fiabilité, contrôle de soi", 
+                challenges: "Isolement, difficulté à demander de l'aide, accumulation du stress"
+            },
+            efforts: {
+                name: "Fais des Efforts",
+                emoji: "🧩",
+                description: "Vous aimez la complexité et les défis intellectuels. Votre créativité est un atout, mais attention à ne pas compliquer inutilement les choses simples.",
+                strengths: "Créativité, innovation, analyse approfondie, persévérance",
+                challenges: "Complication excessive, difficulté avec la simplicité, perfectionnisme créatif"
+            }
+        };
+
+        // Test state
+        let currentQuestionIndex = 0;
+        let answers = {};
+        let userEmail = '';
+        let userName = '';
+
+        // Functions
+        function startTest() {
+            document.getElementById('testSection').classList.remove('hidden');
+            document.getElementById('testSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function startQuestionnaire() {
+            const email = document.getElementById('userEmail').value;
+            const name = document.getElementById('userName').value;
+            
+            if (!email || !name) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            if (!email.includes('@')) {
+                alert('Veuillez entrer une adresse email valide');
+                return;
+            }
+            
+            userEmail = email;
+            userName = name;
+            
+            document.getElementById('emailCapture').classList.add('hidden');
+            document.getElementById('testContainer').classList.remove('hidden');
+            
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestionIndex];
+            const container = document.getElementById('questionContainer');
+            
+            let html = `
+                <h3>${question.text}</h3>
+                <div class="options">
+            `;
+            
+            question.options.forEach((option, index) => {
+                const isSelected = answers[question.id] === index;
+                html += `
+                    <div class="option ${isSelected ? 'selected' : ''}" onclick="selectOption(${question.id}, ${index})">
+                        <input type="radio" name="q${question.id}" value="${index}" id="q${question.id}_${index}" ${isSelected ? 'checked' : ''}>
+                        <label for="q${question.id}_${index}">${option.text}</label>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            container.innerHTML = html;
+            
+            // Update progress
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
+            document.getElementById('totalQuestions').textContent = questions.length;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentQuestionIndex === 0;
+            document.getElementById('nextBtn').disabled = answers[question.id] === undefined;
+            
+            if (currentQuestionIndex === questions.length - 1) {
+                document.getElementById('nextBtn').textContent = 'Voir mes résultats 🎉';
+            }
+        }
+
+        function selectOption(questionId, optionIndex) {
+            answers[questionId] = optionIndex;
+            
+            // Update visual selection
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => option.classList.remove('selected'));
+            options[optionIndex].classList.add('selected');
+            
+            // Enable next button
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        }
+
+        function showResults() {
+            // Calculate scores
+            const scores = {
+                parfait: 0,
+                depeche: 0, 
+                plaisir: 0,
+                fort: 0,
+                efforts: 0
+            };
+            
+            questions.forEach(question => {
+                const answerIndex = answers[question.id];
+                if (answerIndex !== undefined) {
+                    const selectedOption = question.options[answerIndex];
+                    scores[selectedOption.driver] += selectedOption.score;
+                }
+            });
+            
+            // Sort drivers by score
+            const sortedDrivers = Object.entries(scores)
+                .sort(([,a], [,b]) => b - a)
+                .map(([driver, score]) => ({
+                    driver,
+                    score,
+                    percentage: Math.round((score / (questions.length * 3)) * 100),
+                    ...driverDescriptions[driver]
+                }));
+            
+            // Generate results HTML
+            let resultsHTML = `
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <p style="font-size: 1.2em; color: #4a5568;">
+                        Bonjour <strong>${userName}</strong>, voici votre profil de drivers :
+                    </p>
+                </div>
+            `;
+            
+            sortedDrivers.forEach((result, index) => {
+                const isTopDriver = index === 0;
+                const cardStyle = isTopDriver ? 
+                    'background: linear-gradient(135deg, #f0fff4, #e6fffa); border-left-color: #38a169; border-left-width: 6px;' : 
+                    'background: #f8fafc; border-left-color: #cbd5e0; border-left-width: 4px;';
+                
+                resultsHTML += `
+                    <div class="driver-result" style="${cardStyle}">
+                        <div class="driver-name">
+                            ${result.emoji} ${result.name}
+                            ${isTopDriver ? '<span style="color: #38a169; font-size: 0.8em; margin-left: 10px;">DRIVER DOMINANT</span>' : ''}
+                        </div>
+                        <div class="driver-score">
+                            Score: ${result.score}/${questions.length * 3} (${result.percentage}%)
+                        </div>
+                        <div class="driver-description">
+                            <p><strong>Description:</strong> ${result.description}</p>
+                            <p><strong>Forces:</strong> ${result.strengths}</p>
+                            <p><strong>Attention à:</strong> ${result.challenges}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('resultsContent').innerHTML = resultsHTML;
+            document.getElementById('testContainer').classList.add('hidden');
+            document.getElementById('resultsContainer').classList.remove('hidden');
+            
+            // Scroll to results
+            document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function contactExpert() {
+            // Simulate sending results to expert
+            alert(`Merci ${userName} ! Un expert vous contactera bientôt à ${userEmail} pour approfondir votre analyse des drivers.`);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Any initialization code can go here
+        });
+    </script>
+</body>
+</html>
