@@ -1208,7 +1208,7 @@
             
             userEmail = email;
             userName = name;
-            sendLead(userEmail, userName);
+            //sendLead(userEmail, userName);
 
 
             document.getElementById('emailCapture').classList.add('hidden');
@@ -1298,9 +1298,9 @@
                     const selectedOption = question.options[answerIndex];
                     scores[selectedOption.driver] += selectedOption.score;
                     userAnswers.push({
-                        index: question.id,              // numéro de la question
+                        index: question.text,              // numéro de la question
                         driver: question.options.driver,    // driver lié à la question
-                        value: answerIndex               // réponse choisie
+                        value: answers[question.options.text]              // réponse choisie
                     });
 
                 }
@@ -1316,6 +1316,21 @@
                     ...driverDescriptions[driver]
                 }));
             
+            // ---- Envoi Formspree du résultat final ----
+            const top = sortedDrivers[0] || { driver: null, score: 0, percentage: 0 };
+            const summaryText = `Driver dominant : ${top.driver} (${top.percentage}%)`;
+
+            // userEmail / userName : utilise tes variables existantes (ou '' si pas de prénom)
+            sendFinalResult({
+                email: userEmail || '',
+                name:  userName  || '',
+                topDriver: top.driver,
+                topScore: top.score,
+                topPercentage: top.percentage,
+                scores,
+                summaryText
+            });
+
             // Generate results HTML
             let resultsHTML = `
                 <div style="text-align: center; margin-bottom: 30px;">
@@ -1399,6 +1414,27 @@
                 answers,
                 ua: navigator.userAgent
             });
+        }
+
+        function sendFinalResult({ email, name, topDriver, topScore, topPercentage, scores, summaryText }) {
+            return fetch(FORMSPREE_ENDPOINT, {
+                method: "POST",
+                headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                type: "results",
+                email,
+                name,
+                topDriver,
+                topScore,
+                topPercentage,
+                scores,        // ex: { SP: 10, DT: 7, ... }
+                summaryText,   // petite phrase lisible dans Formspree
+                ua: navigator.userAgent
+                })
+            }).catch(()=>{});
         }
     </script>
 </body>
