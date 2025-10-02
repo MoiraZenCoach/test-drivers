@@ -859,6 +859,28 @@
                     { text: "Prendre en charge sans montrer mes doutes", driver: "fort", score: 3 },
                     { text: "Chercher la solution la plus complexe", driver: "efforts", score: 3 }
                 ]
+            },
+            {
+                id: 2,
+                text: "Quand vous êtes sous pression, vous :",
+                options: [
+                    { text: "Devenez encore plus méticuleux", driver: "parfait", score: 3 },
+                    { text: "Accélérez le rythme de travail", driver: "depeche", score: 3 },
+                    { text: "Cherchez à rassurer les autres", driver: "plaisir", score: 3 },
+                    { text: "Gardez vos préoccupations pour vous", driver: "fort", score: 3 },
+                    { text: "Compliquez les choses sans le vouloir", driver: "efforts", score: 3 }
+                ]
+            },
+            {
+                id: 3,
+                text: "Dans une réunion, vous avez tendance à :",
+                options: [
+                    { text: "Relever les erreurs et imprécisions", driver: "parfait", score: 3 },
+                    { text: "Vouloir accélérer les débats", driver: "depeche", score: 3 },
+                    { text: "Éviter les confrontations directes", driver: "plaisir", score: 3 },
+                    { text: "Rester silencieux même si vous n'êtes pas d'accord", driver: "fort", score: 3 },
+                    { text: "Proposer des solutions alambiquées", driver: "efforts", score: 3 }
+                ]
             }
         ];
         const questions2 = [
@@ -1208,7 +1230,7 @@
             
             userEmail = email;
             userName = name;
-            //sendLead(userEmail, userName);
+            sendLead(userEmail, userName);
 
 
             document.getElementById('emailCapture').classList.add('hidden');
