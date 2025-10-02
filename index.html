@@ -1298,9 +1298,9 @@
                     const selectedOption = question.options[answerIndex];
                     scores[selectedOption.driver] += selectedOption.score;
                     userAnswers.push({
-                        index: question.text,              // numéro de la question
-                        driver: question.options.driver,    // driver lié à la question
-                        value: answers[question.options.text]              // réponse choisie
+                        question: question.text,              // numéro de la question
+                        driver: selectedOption.driver,    // driver lié à la question
+                        value: selectedOption.text             // réponse choisie
                     });
 
                 }
