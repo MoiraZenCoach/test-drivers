@@ -1170,6 +1170,8 @@
         let answers = {};
         let userEmail = '';
         let userName = '';
+        let userAnswers = [];
+
 
         // Functions
         function startTest() {
@@ -1193,7 +1195,9 @@
             
             userEmail = email;
             userName = name;
-            
+            sendLead(userEmail, userName);
+
+
             document.getElementById('emailCapture').classList.add('hidden');
             document.getElementById('testContainer').classList.remove('hidden');
             
@@ -1280,6 +1284,12 @@
                 if (answerIndex !== undefined) {
                     const selectedOption = question.options[answerIndex];
                     scores[selectedOption.driver] += selectedOption.score;
+                    userAnswers.push({
+                        index: question.id,              // numéro de la question
+                        driver: ITEMS[question.id].k,    // driver lié à la question
+                        value: answerIndex               // réponse choisie
+                    });
+
                 }
             });
             
@@ -1332,6 +1342,9 @@
             
             // Scroll to results
             document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth' });
+
+            // Send Results
+            sendResults(userEmail, userName, scores, userAnswers);
         }
 
         function contactExpert() {
@@ -1343,6 +1356,37 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Any initialization code can go here
         });
+        // === Formspree webhook ===
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/xyznjjqd";
+
+        function postJSON(url, payload){
+            return fetch(url, {
+                method: "POST",
+                headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            }).catch(()=>{});
+        }
+
+        function sendLead(email, name){
+            return postJSON(FORMSPREE_ENDPOINT, {
+                type: "lead",
+                email, name,
+                ua: navigator.userAgent
+            });
+        }
+
+        function sendResults(email, name, scores, answers){
+            return postJSON(FORMSPREE_ENDPOINT, {
+                type: "results",
+                email, name,
+                scores,
+                answers,
+                ua: navigator.userAgent
+            });
+        }
     </script>
 </body>
 </html>
