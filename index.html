@@ -859,6 +859,19 @@
                     { text: "Prendre en charge sans montrer mes doutes", driver: "fort", score: 3 },
                     { text: "Chercher la solution la plus complexe", driver: "efforts", score: 3 }
                 ]
+            }
+        ];
+        const questions2 = [
+            {
+                id: 1,
+                text: "Face à un projet important, vous avez tendance à :",
+                options: [
+                    { text: "Vérifier tous les détails plusieurs fois", driver: "parfait", score: 3 },
+                    { text: "Foncer rapidement pour obtenir des résultats", driver: "depeche", score: 3 },
+                    { text: "M'assurer que tout le monde est d'accord", driver: "plaisir", score: 3 },
+                    { text: "Prendre en charge sans montrer mes doutes", driver: "fort", score: 3 },
+                    { text: "Chercher la solution la plus complexe", driver: "efforts", score: 3 }
+                ]
             },
             {
                 id: 2,
@@ -1286,7 +1299,7 @@
                     scores[selectedOption.driver] += selectedOption.score;
                     userAnswers.push({
                         index: question.id,              // numéro de la question
-                        driver: ITEMS[question.id].k,    // driver lié à la question
+                        driver: question.options.driver,    // driver lié à la question
                         value: answerIndex               // réponse choisie
                     });
 
